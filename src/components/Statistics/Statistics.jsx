@@ -7,7 +7,6 @@ export default class Statistics extends React.Component {
     return (
       <div>
         <>
-          {console.log('bee')}
           <p className={css.color}>Good: {this.props.good}</p>
           <p className={css.color}>Neutral: {this.props.neutral}</p>
           <p className={css.color}>Bad: {this.props.bad}</p>
