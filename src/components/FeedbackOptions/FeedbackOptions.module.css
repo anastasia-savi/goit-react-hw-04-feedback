@@ -1,5 +1,14 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding-left: 0;
+  gap: 15px;
+}
+
 .buttons {
-  border-radius: 25%;
+  border-radius: 10px;
   border: 1px solid black;
   margin-right: 3px;
+  padding: 5px 10px;
 }

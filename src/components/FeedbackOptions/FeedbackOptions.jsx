@@ -1,36 +1,30 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
 
-export default class FeedbackOptions extends React.Component {
-  render() {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  const opt = options.map(option => {
     return (
-      <div className="buttons">
+      <li className={css.listItem} key={nanoid()}>
         <button
           className={css.buttons}
           type="button"
-          onClick={() => this.props.onLeaveFeedback('good')}
+          onClick={() => onLeaveFeedback(option)}
         >
-          Good
+          {option}
         </button>
-        <button
-          className={css.buttons}
-          type="button"
-          onClick={() => this.props.onLeaveFeedback('neutral')}
-        >
-          Neutral
-        </button>
-        <button
-          className={css.buttons}
-          type="button"
-          onClick={() => this.props.onLeaveFeedback('bad')}
-        >
-          Bad
-        </button>
-      </div>
+      </li>
     );
-  }
-}
+  });
+  return (
+    <div className="buttons">
+      <ul className={css.list}>{opt}</ul>
+    </div>
+  );
+};
+
+export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,

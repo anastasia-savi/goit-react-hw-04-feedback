@@ -32,7 +32,7 @@ export default class App extends React.Component {
       <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={Object.keys(this.state)}
             onLeaveFeedback={feedback => this.onLeaveFeedback(feedback)}
           />
         </Section>
