@@ -10,17 +10,18 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const onLeaveGFeedback = () => {
-    setGood(state => state + 1)
-  }
+const onLeaveFeedback = (feedback) =>{
+  switch(feedback){
 
-  const onLeaveNFeedback = () => {
-    setNeutral(state => state + 1)
+    case 'good': setGood(state => state + 1);
+    break;
+    case 'neutral': setNeutral(state => state + 1);
+    break;
+    case 'bad': setBad(state => state + 1)
+    break;
+    default: console.log('Sorry, wrong type')
   }
-
-  const onLeaveBFeedback = () => {
-    setBad(state => state + 1)
-  }
+}
 
   const countTotalFeedback = () => {
     return good + neutral + bad;
@@ -36,9 +37,8 @@ export default function App() {
       <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            onLeaveGFeedback={onLeaveGFeedback}
-            onLeaveNFeedback={onLeaveNFeedback}
-            onLeaveBFeedback={onLeaveBFeedback}
+            onLeaveFeedback={feedback => onLeaveFeedback(feedback)}
+            options={['good', 'neutral', 'bad']}
           />
         </Section>
         <Section title="Statistics">
